@@ -1,14 +1,18 @@
-import { useState } from "react";
-
-import { close, logo, menu } from "../assets";
-import { navLinks } from "../constants";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const [active, setActive] = useState("Home");
-    const [toggle, setToggle] = useState(false);
-
     return (
-        <h1>Navbar</h1>
+        <nav className="flex justify-between p-4 bg-gray-800 text-white">
+            <ul className="flex">
+                <li className="mx-2">
+                    <Link to="/pagina1" className="text-white no-underline">Student Form</Link>
+                </li>
+                <li className="mx-2">
+                    <Link to="/pagina2" className="text-white no-underline">Teacher Panel</Link>
+                </li>
+            </ul>
+        </nav>
     );
 };
 
