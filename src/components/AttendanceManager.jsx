@@ -52,13 +52,13 @@ const AttendanceManager = () => {
             toast.error('Por favor, ingrese un correo electrónico válido.');
         } else {
             try {
-                const responseCheckTeacher = await axios.get(`http://localhost:9000/api/profesor/check/${emailProfesor}`, { headers: { Authorization: `Bearer ${token}` } });
+                const responseCheckTeacher = await axios.get(`https://api-control-asistencia.vercel.app/api/profesor/check/${emailProfesor}`, { headers: { Authorization: `Bearer ${token}` } });
                 if (!responseCheckTeacher.data) {
                     toast.error('No se encontró ningún profesor con ese correo electrónico.');
                 } else if (responseCheckTeacher.data === true) {
-                    const responseGetTeacher = await axios.get(`http://localhost:9000/api/profesor/email/${emailProfesor}`, { headers: { Authorization: `Bearer ${token}` } });
+                    const responseGetTeacher = await axios.get(`https://api-control-asistencia.vercel.app/api/profesor/email/${emailProfesor}`, { headers: { Authorization: `Bearer ${token}` } });
                     setProfesorData(responseGetTeacher.data);
-                    const responseGetStudents = await axios.get(`http://localhost:9000/api/estudiante/teacher/${responseGetTeacher.data._id}`, { headers: { Authorization: `Bearer ${token}` } });
+                    const responseGetStudents = await axios.get(`https://api-control-asistencia.vercel.app/api/estudiante/teacher/${responseGetTeacher.data._id}`, { headers: { Authorization: `Bearer ${token}` } });
                     setStudentsData(responseGetStudents.data);
                     setModalIsOpen(false);
                 } else {
@@ -72,7 +72,7 @@ const AttendanceManager = () => {
 
     const handleDownload = async (studentId) => {
         try {
-            const response = await axios.get(`http://localhost:9000/api/asistencia/student/${studentId}`, { headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.get(`https://api-control-asistencia.vercel.app/api/asistencia/student/${studentId}`, { headers: { Authorization: `Bearer ${token}` } });
             const data = response.data.map(item => flattenAndFormatObject(item));
 
             const ws = XLSX.utils.json_to_sheet(data);
@@ -113,50 +113,6 @@ const AttendanceManager = () => {
                     </div>
                 </div>
             </Modal>
-            {/*<form onSubmit={handleSearch} className="flex flex-wrap justify-between items-center bg-gray-200 p-4">*/}
-            {/*    <div className="w-full sm:w-auto mb-4 sm:mb-0">*/}
-            {/*        <label className="block mb-2">*/}
-            {/*            Estudiante:*/}
-            {/*        </label>*/}
-            {/*        <Select*/}
-            {/*            options={studentsData.map(student => ({value: student._id, label: `${student.name} ${student.lastName}`}))}*/}
-            {/*            isSearchable*/}
-            {/*            className="w-full"*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*    <div className="w-full sm:w-auto mb-4 sm:mb-0">*/}
-            {/*        <label className="block mb-2">*/}
-            {/*            Grupo:*/}
-            {/*        </label>*/}
-            {/*        <Select*/}
-            {/*            options={studentsData.map(student => ({value: student.group, label: `${student.grade} ${student.group.number}` }))}*/}
-            {/*            isSearchable*/}
-            {/*            className="w-full"*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*    <div className="w-full sm:w-auto mb-4 sm:mb-0">*/}
-            {/*        <label className="block mb-2">*/}
-            {/*            Materia:*/}
-            {/*        </label>*/}
-            {/*        <Select*/}
-            {/*            options={profesorData.subjects ? profesorData.subjects.map(subject => ({*/}
-            {/*                value: subject._id,*/}
-            {/*                label: subject.name*/}
-            {/*            })) : []}*/}
-            {/*            isSearchable*/}
-            {/*            className="w-full"*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*    /!*<div className="w-full sm:w-auto mb-4 sm:mb-0">*!/*/}
-            {/*    /!*    <label className="block mb-2">*!/*/}
-            {/*    /!*        Fecha:*!/*/}
-            {/*    /!*    </label>*!/*/}
-            {/*    /!*    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full"/>*!/*/}
-            {/*    /!*</div>*!/*/}
-            {/*    <div className="w-full sm:w-auto">*/}
-            {/*        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">Buscar</button>*/}
-            {/*    </div>*/}
-            {/*</form>*/}
             <table className="min-w-full divide-y divide-gray-100">
                 <thead className="bg-gray-50">
                 <tr>
