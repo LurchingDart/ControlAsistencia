@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import  axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,7 +20,7 @@ const Formulario = () => {
     const [materiasData, setMateriasData] = useState([]);
     const [profesores, setProfesores] = useState([]);
 
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc2NTllZjdmYjIyMWZjNmE5MDY3OWQiLCJlbWFpbCI6ImFkbWluQGVzY3VlbGEuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzAyMjc0MTYyLCJleHAiOjE3MDI4Nzg5NjJ9.3cmywwH850nkC6qT9-5oZ4Mt9C6rw3kdDmY0DQc6y3g'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc2MDdlNGQ5ZjA2MTdhMThiZGU0NTUiLCJlbWFpbCI6InByb2Zlc29yMUBlbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsImlhdCI6MTcwMjg3OTk4OCwiZXhwIjoxNzAzNDg0Nzg4fQ.LgS7IWd9yvzJmCsutrXP2ndGvjEa_08Nw4g4K2nLU-w'
 
     useEffect(() => {
         axios.get('https://api-control-asistencia.vercel.app/api/grupo', { headers: { Authorization: `Bearer ${token}` } })
