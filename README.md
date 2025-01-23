@@ -1,4 +1,4 @@
-# Control de Asistencia Web App
+# Attendance Web App
 
 [![Project Status](https://img.shields.io/badge/Status-Temporarily_Abandoned-red)](https://asistencia-one.vercel.app/)
 
