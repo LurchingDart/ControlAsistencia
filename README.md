@@ -1,6 +1,6 @@
 # Control de Asistencia Web App
 
-[![Implementation Status](https://img.shields.io/badge/Status-In%20Development-yellow)](https://asistencia-one.vercel.app/)
+[![Project Status](https://img.shields.io/badge/Status-Temporarily_Abandoned-red)](https://asistencia-one.vercel.app/)
 
 
 The Attendance Control web application provides an efficient solution for teachers to record attendance for their groups quickly and accurately. Additionally, it offers administrators the ability to monitor and download attendance reports.
